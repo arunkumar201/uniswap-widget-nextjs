@@ -1,7 +1,6 @@
 'use client'
 
-import '@uniswap/widgets/fonts.css'
-import {SwapWidget} from "@uniswap/widgets"
+import { SwapWidget } from "uniswap-widgets-qwq"
 const JSON_RPC_URL = 'https://cloudflare-eth.com'
 // The url of the default uniswap token list. This list will be passed to the Uniswap component
 // and will appear by default in the token selector UI.
@@ -17,7 +16,7 @@ export function UniswapWidget() {
 			}
 		};
 	}
-	
+
 	return (
 		<main>
 			<h1>Uniswap Swap Widget</h1>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@wunsz-4soft/uniswap-widgets": "2.59.1-main.20",
     "ethers": "5.7.2",
     "i": "^0.3.7",
     "next": "14.2.3",

@@ -1,7 +1,17 @@
 'use client'
 
-import { SwapWidget } from "uniswap-widgets-qwq"
-const JSON_RPC_URL = 'https://cloudflare-eth.com'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
+
+import "./widget.css"
+// import { SwapWidgetSkeleton } from "@dex-swap/widgets"
+import dynamic from "next/dynamic"
+import { Suspense } from "react";
+import { getRPC } from "@/lib/getRPC";
+const SwapWidget = dynamic(async () => (await import("@dex-swap/widgets")).SwapWidget,{
+	ssr: true,
+	loading: () => <AiOutlineLoading3Quarters className="animate-spin"/>,
+})
 // The url of the default uniswap token list. This list will be passed to the Uniswap component
 // and will appear by default in the token selector UI.
 const TOKEN_LIST = 'https://ipfs.io/ipns/tokens.uniswap.org'
@@ -20,21 +30,21 @@ export function UniswapWidget() {
 	return (
 		<main>
 			<h1>Uniswap Swap Widget</h1>
-			<SwapWidget
-				jsonRpcUrlMap={{
-					1: [JSON_RPC_URL]
-				}}
-				// Specifies the set of tokens that appear by default in the token selector list.
-				tokenList={TOKEN_LIST}
-				// Address of the token to be selected by default in the
-				// input field (e.g. USDC) for each network chain ID.
-				defaultInputTokenAddress="NATIVE"
-				// Default amount for the input field in this case 1 ETH
-				defaultInputAmount="1"
-				// Address of the token to be selected by default in the input field (e.g. USDC)
-				// for each network chain ID.
-				defaultOutputTokenAddress={UNI}
-			/>
+				<SwapWidget
+					jsonRpcUrlMap={{
+						1: [getRPC(1)!]
+					}}
+					// Specifies the set of tokens that appear by default in the token selector list.
+					tokenList={TOKEN_LIST}
+					// Address of the token to be selected by default in the
+					// input field (e.g. USDC) for each network chain ID.
+					defaultInputTokenAddress="NATIVE"
+					// Default amount for the input field in this case 1 ETH
+					defaultInputAmount="1"
+					// Address of the token to be selected by default in the input field (e.g. USDC)
+					// for each network chain ID.
+					defaultOutputTokenAddress={UNI}
+				/>
 		</main>
 	)
 }

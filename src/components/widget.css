@@ -1,0 +1,7 @@
+[class^="TokenOptions__OnHover"] {
+	display: none !important;
+}
+
+[type='text']:focus {
+	box-shadow: none;
+}

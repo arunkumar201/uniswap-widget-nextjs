@@ -5,6 +5,7 @@ const RPC_LIST_ETH = [
 	"https://api.zan.top/node/v1/eth/mainnet/public",
 	"https://eth-pokt.nodies.app",
 	"https://rpc.builder0x69.io",
+	"https://eth-mainnet.g.alchemy.com/v2/QWnDJnnZFRJSZABxedDHL1l1x2Y3c1aR",
 ];
 
 export const getRPC = (chainId: number) => {

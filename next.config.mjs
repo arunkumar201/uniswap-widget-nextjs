@@ -1,16 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig={
+const nextConfig = {
 	experimental: {
-		optimizePackageImports: [
-			"@uniswap/widgets",
-			"@dex-swap/widgets"
-		],
+		optimizePackageImports: ["@uniswap/widgets", "@dex-swap/widgets"],
 	},
-	swcMinify: true,
 	webpack: (config) => {
 		config.externals.push("pino-pretty", "lokijs", "encoding");
 		config.resolve.fallback = {
+			...config.resolve.fallback,
 			fs: false,
+			os: false,
+			path: false,
 		};
 		return config;
 	},
